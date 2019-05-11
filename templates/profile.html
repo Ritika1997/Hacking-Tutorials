@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Profile - Hacking Tutorials</title>
+	<link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/style-responsive.css">
+    <link rel="stylesheet" href="static/css/vertical-rhythm.min.css">
+    <script type="text/javascript" src="static/js/jquery.js"></script>
+    <script type="text/javascript" src="static/js/bootstrap.min.js"></script>        
+    <script type="text/javascript" src="static/js/jquery.sticky.js"></script>  
+    <script type="text/javascript" src="static/js/all.js"></script>
+    <script type="text/javascript" src="static/js/jquery.validate.js"></script>
+	<script type="text/javascript" src="static/js/validate.js"></script>
+  </head>
+  <body class="appear-animate">
+      
+	  <div class="page" id="top">
+	  
+			<!-- Navigation panel -->
+            <nav class="main-nav js-stick">
+                <div class="full-wrapper relative clearfix">
+                    <!-- Logo ( * your text or image into link tag *) -->
+                    <div class="nav-logo-wrap local-scroll">
+                        <a href="{{url_for('home')}}" class="logo">
+                            <span>LOGO</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Main Menu -->
+                    <div class="inner-nav desktop-nav">
+                        <ul class="clearlist">
+                            
+                            <!-- Home -->
+                            <li>
+                                <a href="{{url_for('home')}}" class="mn-has-sub">Home <i class="fa"></i></a>
+                            </li>
+                            <!-- End Home -->
+							
+							<!-- Logout -->
+                            <li>
+                                <a href="{{url_for('logout')}}" class="mn-has-sub">Logout <i class="fa"></i></a>
+                            </li>
+                            <!-- End Logout -->
+                   
+                        </ul>
+                    </div>
+                    <!-- End Main Menu -->
+                    
+
+                </div>
+            </nav>
+            <!-- End Navigation panel -->
+            
+			<!-- Head Section -->
+            <section class="small-section bg-dark-lighter">
+                <div class="relative container align-left">
+                    
+                    <div class="row">
+                        
+                        <div class="col-md-8">
+                            <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">Edit Profile</h1>
+                        </div>
+                        
+                        <div class="col-md-4 mt-30">
+                            <div class="mod-breadcrumbs font-alt align-right">
+                                <a href="{{url_for('home')}}">Home</a>&nbsp;/&nbsp;<a href="#">Profile</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+            <!-- End Head Section -->
+
+			<!-- Section -->
+            <section class="page-section bg-grey-darker">
+                <div class="container relative">
+				
+					<div class = 'align-center bg-success' style="display: {{show}};">
+						{% with messages = get_flashed_messages() %}
+							{% if messages %}
+								{% for message in messages %}
+									<p><strong> {{ message }} </strong></p>
+								{% endfor %}
+							{% endif %}
+						{% endwith %}
+					</div>
+					
+					<div class="align-center clearfix" style="margin-bottom: 30px;">
+						<img src="static/images/1.png" style="border-radius: 50%;width: 100px;height: 100px;" alt="Profile Pic"><br>
+						{{user}}<br>
+						{{ctype}}
+					</div>
+                    
+                    <!-- Nav Tabs -->
+                    <div class="align-center mb-40 mb-xxs-30">
+                        <ul class="nav nav-tabs tpl-minimal-tabs">
+                            
+                            <li class="active">
+                                <a href="#mini-one" data-toggle="tab">Change Username</a>
+                            </li>
+                            
+                            <li>
+                                <a href="#mini-two" data-toggle="tab">Change Password</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <!-- End Nav Tabs -->
+                    
+                    <!-- Tab panes -->
+                    <div class="tab-content tpl-minimal-tabs-cont section-text">
+                        
+                        <div class="tab-pane fade in active" id="mini-one">
+                            
+                            <!-- Username Form -->                            
+                            <div class="row">
+                                <div class="col-md-4 col-md-offset-4">
+                                    
+                                    <form method="post" class="form contact-form" id="login-form">
+                                        <div class="clearfix">
+                                            
+                                            <!-- Username -->
+                                            <div class="form-group">
+                                                <input type="text" name="olduser" id="olduser" class="input-md round form-control" placeholder="Old Username">
+                                            </div>
+                                            
+                                            <!-- Password -->
+                                            <div class="form-group">
+                                                <input type="text" name="newuser" id="newuser" class="input-md round form-control" placeholder="New Username">
+                                            </div>
+                                                
+                                        </div>
+                                        
+                                        <!-- Send Button -->
+                                        <div class="pt-10">
+                                            <button type="submit" class="submit_btn btn btn-mod btn-medium btn-round btn-full" onclick="validate()">Update</button>
+                                        </div>
+
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                            <!-- End Username Form -->
+                            
+                        </div>
+                        
+                        <div class="tab-pane fade" id="mini-two">
+                            
+                            <!-- Password Form -->                            
+                            <div class="row">
+                                <div class="col-md-4 col-md-offset-4">
+                                    
+                                    <form method="post" class="form contact-form" id="reg-form">
+                                        <div class="clearfix">
+                                        
+                                            <!-- Username -->
+                                            <div class="form-group">
+                                                <input type="password" name="oldpass" id="oldpass" class="input-md round form-control" placeholder="Old Password">
+                                            </div>
+                                            
+                                            <!-- Password -->
+                                            <div class="form-group">
+                                                <input type="password" name="newpass" id="newpass" class="input-md round form-control" placeholder="New Password">
+                                            </div>
+                                            
+                                            <!-- Re-enter Password -->
+                                            <div class="form-group">
+                                                <input type="password" name="repass" id="repass" class="input-md round form-control" placeholder="Re-enter New Password">
+                                            </div>
+                                                
+                                        </div>
+                                        
+                                        <!-- Send Button -->
+                                        <div class="pt-10">
+                                            <button type="submit" class="submit_btn btn btn-mod btn-medium btn-round btn-full" onclick="validate()">Update</button>
+                                        </div>
+                                        
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                            <!-- End Password Form -->
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </section>
+            <!-- End Section -->
+			
+			<!-- Footer -->
+            <footer class="page-section bg-dark-lighter footer pb-60">
+                <div class="container">
+                    
+                    <!-- Footer Logo -->
+                    <div class="local-scroll mb-30 wow fadeInUp" data-wow-duration="1.5s">
+                        <a href="#top"><i class="fa fa-arrow-up" style="font-size: 24px "></i></a>
+                    </div>
+                    <!-- End Footer Logo -->
+                    
+                    <!-- Social Links -->
+                    <div class="footer-social-links mb-110 mb-xs-60">
+                        <a href="www.facebook.com" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="www.twitter.com" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="www.behance.com" title="Behance" target="_blank"><i class="fa fa-behance"></i></a>
+                        <a href="www.linkedin.com" title="LinkedIn+" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        <a href="www.pinterest.com" title="Pinterest" target="_blank"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                    <!-- End Social Links -->  
+                    
+                    
+                 </div>
+                 
+                 
+                 
+            </footer>
+            <!-- End Foter -->
+        
+        
+        </div>
+        <!-- End Page Wrap -->
+
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cyber Security News</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="static/css/style.css">
+        <link rel="stylesheet" href="static/css/style-responsive.css">
+        <link rel="stylesheet" href="static/css/vertical-rhythm.min.css">
+        
+        <script type="text/javascript" src="static/js/jquery.js"></script>       
+        <script type="text/javascript" src="static/js/jquery.sticky.js"></script>  
+        <script type="text/javascript" src="static/js/all.js"></script>
+    </head>
+    <body class="appear-animate">
+        
+        <!-- Page Loader -->        
+        <!--<div class="page-loader">
+            <div class="loader">Loading...</div>
+        </div>
+        <!-- End Page Loader -->
+        
+        <!-- Page Wrap -->
+        <div class="page" id="top">
+            
+            <!-- Navigation panel -->
+            <nav class="main-nav js-stick">
+                <div class="full-wrapper relative clearfix">
+                    <!-- Logo ( * your text or image into link tag *) -->
+                    <div class="nav-logo-wrap local-scroll">
+                        <a href="{{url_for('home')}}" class="logo">
+                            <span>LOGO</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Main Menu -->
+                    <div class="inner-nav desktop-nav">
+                        <ul class="clearlist">
+                            
+                            <!-- Home -->
+                            <li>
+                                <a href="{{url_for('home')}}" class="mn-has-sub">Home <i class="fa"></i></a>
+                            </li>
+                            <!-- End Home -->
+                            
+                            
+                        
+                            
+                        </ul>
+                    </div>
+                    <!-- End Main Menu -->
+                    
+
+                </div>
+            </nav>
+            <!-- End Navigation panel -->
+            
+            
+            <!-- Head Section -->
+            <section class="small-section bg-dark-lighter">
+                <div class="relative container align-left">
+                    
+                    <div class="row">
+                        
+                        <div class="col-md-8">
+                            <h1 class="hs-line-11 font-alt mb-20 mb-xs-0">Top 10 Cyber Security News</h1>
+                        </div>
+                        
+                        <div class="col-md-4 mt-30">
+                            <div class="mod-breadcrumbs font-alt align-right">
+                                <a href="{{url_for('home')}}">Home</a>&nbsp;/&nbsp;<a href="#">News</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+            <!-- End Head Section -->
+            
+            
+            
+                
+                <!-- Send Button -->
+				{% for (title,url) in data.items() %}
+                <div class="align-left pt-10" style="margin: 10px;">
+                    <a href="{{url}}"><button class="btn btn-mod btn-large btn-round">{{title}}</button></a>
+                </div>
+				{% endfor %}
+				
+            
+            
+            
+            <!-- Footer -->
+            <footer class="page-section bg-gray-lighter footer pb-60">
+                <div class="container">
+                    
+                    <!-- Footer Logo -->
+                    <div class="local-scroll mb-30 wow fadeInUp" data-wow-duration="1.5s">
+                        <a href="#top"><i class="fa fa-arrow-up" style="font-size: 24px "></i></a>
+                    </div>
+                    <!-- End Footer Logo -->
+                    
+                    <!-- Social Links -->
+                    <div class="footer-social-links mb-110 mb-xs-60">
+                        <a href="www.facebook.com" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="www.twitter.com" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="www.behance.com" title="Behance" target="_blank"><i class="fa fa-behance"></i></a>
+                        <a href="www.linkedin.com" title="LinkedIn+" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        <a href="www.pinterest.com" title="Pinterest" target="_blank"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                    <!-- End Social Links -->  
+                    
+                    
+                 </div>
+                 
+                 
+                 
+            </footer>
+            <!-- End Foter -->
+        
+        
+        </div>
+        <!-- End Page Wrap -->
+    </body>
+</html>
